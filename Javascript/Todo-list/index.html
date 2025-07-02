@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Todo List</h1>
+        <div class="todoInputContainer">
+            <input type="text" class="todoInput" id="todoInput" placeholder="Add a new todo...">
+            <input type="date" class="todoDate" id="todoDate" placeholder="Select a date">
+            <button class="addTodoBtn" id="addTodoBtn" onclick="addTodo()">Add Todo</button>
+
+        </div>
+        
+        <br><br>
+        <h2>Your Todos</h2>
+        <div class="todoList" id="todoList">
+            
+        </div>
+    </div>
+
+    <!-- A clear all todo button on the bottom right corner of the page which stays on bottom right -->
+
+    <button class="clearAllBtn" id="clearAllBtn" onclick="clearAllTodos()"><img src="assets/manya.png" alt="" width="70px"></button>
+
+    <script src="script.js"></script>
+</body>
+</html>

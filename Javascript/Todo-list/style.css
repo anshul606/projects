@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    color: white;
+    font-family: "Sour Gummy", Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: #121212;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 80%;
+    margin: 50px auto;
+    padding: 10px 20px 20px 20px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+}
+
+.todoInput{
+    width: 30%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #2e2e2e;
+    color: white;
+    font-size: 16px;
+}
+
+.addTodoBtn{
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #49a34c;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+.todo-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 10px 30px;
+    background-color: #2e2e2e;
+    border-radius: 5px;
+}
+
+.delete-btn{
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ff4d4d;
+    color: white;
+    cursor: pointer;
+}
+
+.todoDate{
+    font-size: 14px;
+    color: white;
+    background-color: #2e2e2e;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.todoInputContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .todoInput{
+        width: 85%;
+    }
+
+    .addTodoBtn {
+        width: 80%;
+    }
+
+    .todoDate{
+        width: 80%;
+        color: white;
+    }
+    
+    .todoInputContainer {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .container {
+        width: 70%;
+        padding: 20px;
+    }
+    
+    .todo-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .delete-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+.clearAllBtn {
+    padding: 10px 20px;
+    border-radius: 100px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    position: fixed;
+    bottom: -15px;
+    right: -15px;
+}

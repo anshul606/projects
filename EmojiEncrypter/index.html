@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SECRET CODE MAKER</title>
+    <link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"></head>
+<body>
+    <div class="container">
+        <h1>SECRET CODE MAKER hehehh</h1>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="encrypt">Encrypt</button>
+            <button class="tab-btn" data-tab="decrypt">Decrypt</button>
+        </div>
+        
+        <div class="tab-content">
+            <div class="tab-pane active" id="encrypt-tab">
+                <h2>Encrypt Your Message</h2>
+                <textarea id="encrypt-input" placeholder="Enter your secret message here..."></textarea>
+                <button id="encrypt-btn" class="action-btn">Encrypt to Emojis</button>
+                <div class="result-container">
+                    <h3>Encrypted Result:</h3>
+                    <div id="encrypt-result" class="result"></div>
+                    <button id="copy-encrypt" class="copy-btn">Copy to Clipboard</button>
+                </div>
+            </div>
+            
+            <div class="tab-pane" id="decrypt-tab">
+                <h2>Decrypt Emoji Message</h2>
+                <textarea id="decrypt-input" placeholder="Paste emoji message here..."></textarea>
+                <button id="decrypt-btn" class="action-btn">Decrypt to Text</button>
+                <div class="result-container">
+                    <h3>Decrypted Result:</h3>
+                    <div id="decrypt-result" class="result"></div>
+                    <button id="copy-decrypt" class="copy-btn">Copy to Clipboard</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

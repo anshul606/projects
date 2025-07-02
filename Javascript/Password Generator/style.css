@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+    background-color: #121212;
+    color: white;
+    font-family: "Sour Gummy", sans-serif;
+    text-align: center;
+}
+body h1{
+    font-size: 50px;
+}
+#length{
+        background-color: rgba(255, 255, 255, 0.08);
+        border: 0.2px solid white;
+        border-radius: 5px;
+        padding: 5px;
+        color: white;
+        text-align: center;
+        height: 15px;
+        font-weight: bold;
+}
+.checkbox{
+    margin: 6px;
+}
+#result{
+    font-size: 20px;
+    color: rgb(176, 255, 139);
+}
+#button{
+    font-size: 15px;
+    font-family: "Sour Gummy", sans-serif;
+    background-color: #a2bffe;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 20px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+#button:hover{
+    background-color: #719dfe;
+    transform: scale(105%);
+}
+#strengthMeter {
+    height: 15px;
+    background-color: #333;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#strengthMeter progress {
+    width: 100%;
+    height: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: none;
+}
+
+/* WebKit (Chrome, Safari) */
+progress::-webkit-progress-bar {
+    background-color: #333;
+    border-radius: 5px;
+}
+
+progress::-webkit-progress-value {
+    background-color: rgb(176, 255, 139);
+    border-radius: 5px;
+}
+
+/* Firefox */
+progress::-moz-progress-bar {
+    background-color: rgb(176, 255, 139);
+}

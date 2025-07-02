@@ -1,0 +1,38 @@
+body{
+    background-color: #121212;
+}
+#container{
+    background-color: #212121;
+    color: white;
+    margin: 40px 20px 20px 20px;
+    padding: 10px 10px 40px 20px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.151);
+}
+#counterDiv{
+    font-family: Helvetica, sans-serif;
+}
+#counter{
+    font-size: 10em;
+    color: #e1c9ff;
+    font-weight: bold;
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.459);
+}
+.button{
+    font-size: 25px;
+    border-radius: 10px;
+    padding: 5px 15px;
+    margin: 5px;
+    cursor: pointer;
+    border:none;
+    background-color: #BB86FC;
+    color: white;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0px 4px 10px rgba(252, 161, 255, 0.452);
+    
+}
+.button:hover {
+    background-color: #8f3af8;
+    transform: scale(105%);
+}

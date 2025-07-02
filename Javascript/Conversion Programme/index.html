@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversion Programme</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="box">
+        <h1>Temperature Conversion :</h1>
+
+        <input type="text" id="textbox" placeholder="0" value="0">
+    
+        <div class="radio">
+            <br><input type="radio" id="toFahrenheit" name="unit">
+            <label for="toFahrenheit">Celcius → Fahrenheit</label><br>
+    
+            <input type="radio" id="toCelcius" name="unit">
+            <label for="toCelcius">Fahrenheit → Celcius</label>
+        </div>
+    
+        <br>
+        <button id="submit" onclick="convert()" class="button">Convert</button>
+        <button id="reload" onclick="reload()" class="button">Reload</button>
+        
+        <p class="result" id="result"></p>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
