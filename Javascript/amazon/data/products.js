@@ -148,27 +148,27 @@ export const products = [
       "shoes",
       "running shoes",
       "footwear"
-    ]
-  },
-  {
-    id: "5968897c-4d27-4872-89f6-5bcb052746d7",
-    image: "images/products/women-chiffon-beachwear-coverup-black.jpg",
-    name: "Women's Chiffon Beachwear Cover Up - Black",
-    rating: {
-      stars: 4.5,
-      count: 235
-    },
-    priceCents: 2070,
-    keywords: [
-      "robe",
-      "swimsuit",
-      "swimming",
-      "bathing",
-      "apparel"
-    ],
-    type: "clothing",
-    sizeChartLink: "images/clothing-size-chart.png"
-  }
+    ]}
+  // },
+  // {
+  //   id: "5968897c-4d27-4872-89f6-5bcb052746d7",
+  //   image: "images/products/women-chiffon-beachwear-coverup-black.jpg",
+  //   name: "Women's Chiffon Beachwear Cover Up - Black",
+  //   rating: {
+  //     stars: 4.5,
+  //     count: 235
+  //   },
+  //   priceCents: 2070,
+  //   keywords: [
+  //     "robe",
+  //     "swimsuit",
+  //     "swimming",
+  //     "bathing",
+  //     "apparel"
+  //   ],
+  //   type: "clothing",
+  //   sizeChartLink: "images/clothing-size-chart.png"
+  // }
   // ,
   // {
   //   id: "aad29d11-ea98-41ee-9285-b916638cac4a",
