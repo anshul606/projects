@@ -1,11 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects</title>
+  <meta charset="UTF-8" />
+  <title>Site in Development Mode</title>
+
+  <style>
+    /* ---------- Color palette (tweak to taste) ---------- */
+    :root {
+      --bg:       #0d1117;
+      --accent:   #58a6ff;
+      --text:     #c9d1d9;
+      --panel:    rgba(255,255,255,0.02);
+      --border:   #30363d;
+    }
+
+    /* ---------- Reset & layout ---------- */
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html,body { height:100%; font-family:system-ui,Roboto,Helvetica,Arial,sans-serif; }
+    body      { display:flex; align-items:center; justify-content:center; background:var(--bg); }
+
+    /* ---------- Card ---------- */
+    .card {
+      text-align:center;
+      padding:4rem 2rem;
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:1rem;
+      box-shadow:0 0 20px rgba(0,0,0,0.4);
+      backdrop-filter:blur(4px);
+    }
+
+    /* ---------- Text ---------- */
+    h1 { color:var(--accent); font-size:2.6rem; letter-spacing:0.05em; margin-bottom:0.5rem; }
+    p  { color:var(--text);   font-size:1.15rem; line-height:1.5;  }
+
+    /* ---------- Animated gear ---------- */
+    .gear {
+      width:80px; height:80px; margin:2.5rem auto 0;
+      border:10px solid var(--accent); border-radius:50%;
+      position:relative; animation:spin 4s linear infinite;
+    }
+    /* two “teeth” */
+    .gear::before,
+    .gear::after {
+      content:""; position:absolute; background:var(--accent);
+      width:20px; height:20px;
+    }
+    .gear::before { top:-20px; left:50%; transform:translateX(-50%); }
+    .gear::after  { left:-20px; top:50%; transform:translateY(-50%); }
+
+    @keyframes spin { to { transform:rotate(360deg); } }
+  </style>
 </head>
+
 <body>
-    
+  <div class="card">
+    <h1>Development&nbsp;Mode</h1>
+    <p>This site is currently under active development.<br />
+       Drop by again soon!</p>
+    <div class="gear"></div>
+  </div>
 </body>
 </html>
