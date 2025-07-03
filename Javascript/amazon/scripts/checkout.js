@@ -19,17 +19,20 @@ cart.forEach((cartItem) => {
 
     const deliveryOptionId = cartItem.deliveryOptionId;
 
-    let deliveryOption;
-        deliveryOptions.forEach((option) => {
-          if (option.id === deliveryOptionId) {
-            deliveryOption = option;
-          }
-        });
 
-        const today = dayjs();
-        const deliveryDate = today.add(deliveryOption.deliveryDays, `days`)
-        const dateString = deliveryDate.format(`dddd, MMM D`);
+    let deliveryOption;
     
+    deliveryOptions.forEach((option) => {
+        if (option.id === deliveryOptionId) {
+            deliveryOption = option;
+        }
+    });
+    
+    const today = dayjs();
+    const deliveryDate = today.add(
+        deliveryOption.deliveryDays, 
+        `days`);
+    const dateString = deliveryDate.format(`dddd, MMM D`);
 
   cartSummaryHTML += `
     <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
@@ -124,7 +127,6 @@ document.querySelectorAll('.js-delivery-option')
     .forEach((element) => {
       element.addEventListener('click', () => {
         const {productId, deliveryOptionId} = element.dataset;
-
 
         updateDeliveryOption(productId, deliveryOptionId);
       });

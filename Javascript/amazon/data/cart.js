@@ -11,6 +11,8 @@ export let cart = JSON.parse(localStorage.getItem('cart')) || [
   }
 ];
 
+
+
 function saveToStorage(){
   localStorage.setItem('cart', JSON.stringify(cart));
 }
@@ -58,7 +60,7 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
     }
   });
 
-  matchingItem.deliveryOptionId = deliveryOptionId;
-  
+  matchingItem.deliveryOptionId = Number(deliveryOptionId);
+
   saveToStorage();
 };
