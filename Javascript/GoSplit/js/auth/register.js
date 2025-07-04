@@ -47,6 +47,6 @@ button.addEventListener("click", (event) => {
     const errorMessageElement = document.getElementById("error-message");
 
     // ..
-    // errorMessageElement.innerHTML = errorMessage;
+    errorMessageElement.innerHTML = errorMessage;
   });
 });
