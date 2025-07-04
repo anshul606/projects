@@ -15,7 +15,7 @@ const firebaseConfig = {
 const loggedIn = localStorage.getItem("loggedIn");
 
 if (loggedIn) {
-  window.location.href = "../../main.html";
+  window.location.href = "main.html";
 }
 
 // Initialize Firebase
@@ -38,7 +38,7 @@ button.addEventListener("click", (event) => {
     // Signed up 
     const user = userCredential.user;
     localStorage.setItem("loggedIn", true);
-    window.location.href = "../../main.html";
+    window.location.href = "main.html";
     // ...
   })
   .catch((error) => {
