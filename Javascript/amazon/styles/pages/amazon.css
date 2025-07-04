@@ -154,3 +154,12 @@
   padding: 8px;
   border-radius: 50px;
 }
+
+.size-chart-link {
+  color: rgb(0, 118, 4);
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
