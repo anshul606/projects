@@ -64,14 +64,17 @@
   <main id="trip-content">
     <!-- CARD ①  EXPENSES ---------------------------------->
     <section class="card expenses-card">
-      <h2>Expenses</h2>
+      <div class="expense-header">
+        <h2>Expenses</h2>
+      <button id="export-expenses" class="export-btn" title="Download Excel"><i data-lucide="Download"></i> Export</button>
+      </div>
       <ul id="expense-list"></ul>
       <p id="no-expense-msg" class="hidden">No expenses yet.</p>
 
       <form id="add-expense-form" autocomplete="off">
         <input id="expense-desc" placeholder="Description" />
         <input id="expense-amount" type="number" min="0" placeholder="Amount" />
-        <button id="add-expense-btn">Add</button>
+        <button id="add-expense-btn" **type="button">Add</button>
       </form>
     </section>
 
@@ -82,7 +85,7 @@
 
       <div class="invite-row">
         <input id="invite-link" readonly />
-        <button id="copy-invite" title="Copy">📋</button>
+        <button id="copy-invite" title="Copy"><i data-lucide="Clipboard" onclick=""></i></button>
       </div>
     </section>
 
@@ -91,6 +94,31 @@
       <h2>Members (<span id="member-count">0</span>)</h2>
       <ul id="members-list"></ul>
     </section>
+
+    <!-- 🔸 EDIT MODAL -->
+<div id="edit-modal" class="modal-overlay hidden">
+  <div class="modal-card">
+    <h3>Edit Expense</h3>
+    <input id="edit-desc"  placeholder="Description" />
+    <input id="edit-amt"   type="number" min="0" placeholder="Amount" />
+    <div class="modal-actions">
+      <button id="edit-save"   class="primary">Save</button>
+      <button id="edit-cancel" class="secondary">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- 🔸 DELETE CONFIRM MODAL -->
+<div id="delete-modal" class="modal-overlay hidden">
+  <div class="modal-card">
+    <p>Delete this expense?</p>
+    <div class="modal-actions">
+      <button id="del-confirm" class="danger">Delete</button>
+      <button id="del-cancel"  class="secondary">Cancel</button>
+    </div>
+  </div>
+</div>
+
   </main>
 </div>
 
@@ -105,6 +133,8 @@
     </div>
   </div>
 
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <script type="module" src="js/main.js"></script>
   <script type="module" src="js/trip.js"></script>
 </body>

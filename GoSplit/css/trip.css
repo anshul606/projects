@@ -1,43 +1,270 @@
-/* ——— layout ——— */
-#trip-content{
-  margin-top:20px;
+/* ── Trip Module Styles ────────────────────────────── */
+
+/* Layout wrapper */
+#trip-content {
+  margin: 20px auto 0;
+  max-width: 880px;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Card container */
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  padding: 1.6rem 2rem;
+}
+.card h2 {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* ── Expenses Grid ─────────────────────────────────── */
+#expense-list {
+  display: grid;
+  gap: 0.6rem;
+}
+
+/* Header & data rows share grid layout */
+.expense-row {
+  display: grid;
+  grid-template-columns: 20% 30% 20% 10% 20%; /* Description, Paid By, Date, Amount */
+  gap: 1rem;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.expense-row.header {
+  font-weight: 600;
+  color: #334155;
+}
+
+.expense-row .amount {
+  font-weight: 600;
+  text-align: right;
+  color: #1e293b;
+  text-align: left;
+}
+
+/* ── Add Expense Form ─────────────────────────────── */
+#add-expense-form {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr auto;
+  gap: 0.6rem;
+}
+#add-expense-form input {
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+#add-expense-form button {
+  background: #3b82f6;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.55rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+#add-expense-form button:hover { background: #2563eb; }
+
+
+
+/* ── Invite Section ───────────────────────────────── */
+.invite-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+#invite-link {
+  flex: 1;
+  font-size: 0.9rem;
+  padding: 0.55rem 0.8rem;
+  border: 1px dashed #cbd5e1;
+  border-radius: 6px;
+  background: #f9fafb;
+  color: #334155;
+}
+#copy-invite {
+  padding: 0.55rem 1rem;
+  border: none;
+  background: #e5e7eb;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+#copy-invite:hover { background: #d1d5db; }
+#generate-invite {
+  background: #3b82f6;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+#generate-invite:hover { background: #2563eb; }
+
+/* ── Members Section ─────────────────────────────── */
+#members-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.member-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #eef2ff;
+  border-radius: 20px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+  color: #1e293b;
+}
+.member-badge img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Utilities */
+.hidden { display: none; }
+
+/* Action buttons in each row */
+.row-actions {
+  display: flex;
+  gap: .4rem;
+  margin-left: .6rem;            /* slight spacing from amount column */
+}
+.row-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;               /* emoji size */
+  line-height: 1;
+  padding: 0;
+}
+.row-actions button:hover { opacity: 0.7; }
+
+/* ── Pop‑up Modals ───────────────────────────── */
+/* ── Pop‑up Modals (with grow animation) ────────────── */
+@keyframes modalFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes cardGrow {
+  from {
+    transform: scale(0);
+  }
+  to   {
+    transform: scale(1);
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+
+  /* fade‑in for overlay */
+  animation: modalFade 250ms ease forwards;
+}
+
+.modal-card {
+  width: 320px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.6rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,.15);
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  text-align: center;
+
+  /* grow‑in for card */
+  transform-origin: center;
+  animation: cardGrow 250ms cubic-bezier(.4,1.4,.6,1) forwards;
+}
+
+.modal-card input{
+  border:1px solid #d1d5db;
+  border-radius:6px;
+  padding:.55rem .8rem;
+  font-size:.95rem;
+}
+.modal-actions{
   display:flex;
-  flex-direction:column;
-  gap:2rem;
-  max-width:880px;
+  justify-content:center;
+  gap:.8rem;
+  margin-top:.4rem;
+}
+.modal-actions button{
+  padding:.45rem 1.2rem;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:.9rem;
+}
+button.primary  { background:#3b82f6;color:#fff; }
+button.danger   { background:#ef4444;color:#fff; }
+button.secondary{ background:#e5e7eb;color:#334155; }
+button:hover{ opacity:.9; }
+.hidden{ display:none!important; }
+
+.export-btn{
+  background:#e5e7eb;
+  border:none;
+  border-radius:6px;
+  padding:.35rem .9rem;
+  cursor:pointer;
+  font-size:.85rem;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: -10px;
+}
+.export-btn:hover{ background:#d1d5db; }
+
+.edit-expense{
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-right: 5px;
+}
+.delete-expense{
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
-/* ——— cards ——— */
-.card{
-  background:#fff;
-  border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,.06);
-  padding:1.5rem 2rem;
+.expense-header{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
 }
-.card h2{margin-top:0;font-size:1.25rem;font-weight:600}
-
-/* Expenses list */
-.expense-item{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:.6rem 0;border-bottom:1px solid #eee;
-}
-.expense-user{font-size:.8rem;color:#888;margin-left:.4rem}
-.amount{font-weight:600}
-#expense-list{list-style:none;padding:0;margin:0}
-
-/* Add‑expense form */
-#add-expense-form{
-  margin-top:1rem;display:grid;grid-template-columns:2fr 1fr auto;gap:.6rem
-}
-#add-expense-form input{padding:.55rem .8rem;border:1px solid #ddd;border-radius:6px}
-#add-expense-form button{background:#3b82f6;color:#fff;border:none;border-radius:6px;padding:.55rem 1.4rem;cursor:pointer}
-
-/* Invite row */
-.invite-row{display:flex;gap:.5rem;margin-top:1rem}
-#invite-link{flex:1;border:1px dashed #bbb;border-radius:6px;padding:.55rem .8rem;font-size:.9rem}
-#copy-invite{padding:0 .9rem;border:none;background:#f3f4f6;border-radius:6px;cursor:pointer}
-
-/* Members */
-#members-list{display:flex;flex-wrap:wrap;gap:.8rem;padding:0;margin:0;list-style:none}
-.member-badge{display:flex;align-items:center;gap:.4rem;background:#f5f7ff;border-radius:20px;padding:.3rem .9rem;font-size:.85rem}
-.member-badge img{width:24px;height:24px;border-radius:50%}
