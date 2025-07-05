@@ -142,7 +142,7 @@ document
       expiresAt: expires,
     });
 
-    const link = `${location.origin}/main.html?invite=${inviteParam}`;
+    const link = `${location.origin}/gosplit/main.html?invite=${inviteParam}`;
     const linkInput = document.getElementById("invite-link");
     linkInput.value = link;
     linkInput.select();

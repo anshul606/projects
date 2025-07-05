@@ -9,7 +9,7 @@ import { setDoc, doc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase
 
 /* Redirect if already logged in */
 onAuthStateChanged(auth, user => {
-  if (user) location.href = "../main.html";
+  if (user) location.href = "main.html";
   else      document.body.classList.remove("precheck");
 });
 

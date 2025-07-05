@@ -18,7 +18,7 @@
 
 body {
   display: flex;
-  background-image: url("../../assets/pc-bg-main.png");
+  background-image: url("../assets/pc-bg-main.png");
   font-family: 'Poppins', sans-serif;
   color: var(--text-light);
   background-color: #F8FAFC;   /* light gray bg for contrast */
