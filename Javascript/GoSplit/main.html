@@ -5,11 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoSplit</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" href="assets/favicon.png">
 </head>
 <body>
     <div class="bg-layer"></div>
-    <h1>GoSplit</h1>
-    <button id="logout">Logout</button>
+    <aside class="sidebar">
+        <div>
+            <h1 class="logo"><img src="assets/main-logo-nobg.png" alt="" width="180px"></h1>
+            <nav class="nav">
+                <a href="#" data-id="dashboard" class="nav-item nav-item-checked">Dashboard</a>
+                <a href="#" data-id="expenses" class="nav-item ">Expenses</a>
+                <a href="#" data-id="balances" class="nav-item ">Balances</a>
+                <a href="#" data-id="settings" class="nav-item ">Settings</a>
+            </nav>
+        </div>
+        <button id="logout" class="logout">Logout</button>
+    </aside>
+
+        <div class="content">
+            <div class="content-item content-item_active" id="dashboard">
+                <header>
+                    <h1>Dashboard</h1>
+                </header>
+            </div>
+            <div class="content-item" id="expenses">
+                <h1>expenses</h1>
+            </div>
+            <div class="content-item" id="balances">
+                <h1>balances</h1>
+            </div>
+            <div class="content-item" id="settings">
+                <h1>settings</h1>
+            </div>
+        </div>
+
     <script src="js/main.js"></script>
 </body>
 </html>
