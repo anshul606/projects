@@ -1,0 +1,66 @@
+/* Trip panel layout */
+#expense-section { margin-top: 20px; }
+
+#expense-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+  display: grid;
+}
+
+.expense-card {
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+#add-expense {
+  margin-top: 28px;
+  padding: 18px 22px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  max-width: 400px;
+}
+
+#add-expense input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+#add-expense button {
+  width: 100%;
+  padding: 10px 16px;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.hidden { display: none; }
+
+
+#generate-invite {
+  margin-top: 20px;
+  background: #3b82f6;
+  color: #fff;
+  padding: 8px 14px;
+  border:none; border-radius:6px; cursor:pointer;
+}
+
+#generate-invite:hover { background:#2563eb; }
+
+#invite-link {
+  font-size: 14px;
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+}

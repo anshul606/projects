@@ -1,113 +1,292 @@
 /* === Base & Font === */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-*{margin:0;padding:0;box-sizing:border-box;}
-
-:root{
-  --sidebar-bg:     #111827;   /* deep slate (slightly bluish gray) */
---sidebar-active: #374151;   /* mid-gray with subtle blue tone */
---sidebar-hover:  #1f2937;   /* softer hover gray */
---text-light:     #d1d5db;   /* cool light gray text */
---logout-bg:      #ef4444;   /* bold red (modern warning) */
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-  display:flex;
-  font-family:'Poppins',sans-serif;
-  color:black;
-  height:100vh;
-  overflow:hidden;
-  background-color:white;
+:root {
+  --sidebar-bg:     #1F1F1F;
+  --sidebar-hover:  #2C2C2C;
+  --sidebar-active: #3D3D3D;
+  --text-light:     #F5F5F5;
+  --logout-bg:      #FF6B6B;
+}
+
+
+body {
+  display: flex;
+  background-image: url("../../assets/pc-bg-main.png");
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-light);
+  background-color: #F8FAFC;   /* light gray bg for contrast */
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* === Sidebar === */
-.sidebar{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:space-between;
-  width:250px;
-  height:100vh;
-  background-color:var(--sidebar-bg);          /* updated */
-  padding:20px;
-  box-shadow:10px 0 20px rgba(0,0,0,.2);
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 300px;
+  height: 100vh;
+  background-color: var(--sidebar-bg);
+  padding: 20px;
+  box-shadow: 10px 0 20px rgba(0, 0, 0, 0.2);
 }
 
-.logo{
-  text-align:center;
+.logo {
+  text-align: center;
   margin-right: 20px;
 }
 
-.nav{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  justify-content:center;
-  height:100%;
-  width:180px;
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+  width: 250px;
 }
 
-.nav a{
-  display:block;
-  margin-bottom:10px;
-  color:var(--text-light);                     /* updated */
-  text-decoration:none;
+.nav a {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--text-light);
+  text-decoration: none;
 }
 
-.nav-item{
-  padding:10px;
-  width:100%;
-  cursor:pointer;                              /* new */
-  transition:background 150ms ease;            /* new */
+.nav-item {
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  transition: background 150ms ease;
+  border-radius: 5px;
 }
 
-.nav-item:hover{
-  background-color:var(--sidebar-hover);       /* updated */
-  border-radius:5px;
+.nav-item:hover {
+  background-color: var(--sidebar-hover);
 }
 
-.nav-item-checked{
-  background-color:var(--sidebar-active);      /* updated */
-  color:#fff;                                  /* ensure contrast */
-  border-radius:5px;
-  width:100%;
+.nav-item-checked {
+  background-color: var(--sidebar-active);
+  color: #ffffff;
 }
 
-.nav-item-checked:hover{
-  background-color:var(--sidebar-active);      /* updated */
-  color:#fff;                                  /* ensure contrast */
-  border-radius:5px;
-  width:100%;
+.nav-item-checked:hover {
+  background-color: var(--sidebar-active);
+  color: #ffffff;
 }
 
-.logout{
-  padding:10px;
-  background-color:var(--logout-bg);
-  color:#ffffff;
-  border:none;
-  border-radius:4px;
-  cursor:pointer;
-  margin-bottom:10px;
-  width:100%;
-  font-size:17px;
+/* === Logout Button === */
+.logout {
+  padding: 10px;
+  background-color: var(--logout-bg);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  width: 100%;
+  font-size: 17px;
+  transition: background 150ms ease;
+}
+
+.logout:hover {
+  background-color: #be123c; /* deeper rose for hover */
 }
 
 /* === Content === */
-.content{
-  flex:1;                /* fill leftover space */
-  padding:20px 30px;     /* internal spacing */
-  overflow-y:auto;
+.content {
+  flex: 1;
+  padding: 30px 40px;
+  overflow-y: auto;
+  color: #0F172A; /* darker for main content */
 }
 
-.content header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:5px;
-  padding-bottom:10px;
-  border-bottom: 1px solid rgba(54, 54, 54, 0.209);
+.content header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.content-item{display:none;}
-.content-item.content-item_active{display:block;}
+.profile-image {
+  cursor: pointer;
+}
+
+.content-item {
+  display: none;
+}
+
+.content-item.content-item_active {
+  display: block;
+}
+
+/* ----------  Trips Section  ---------- */
+#trips-section {
+  margin-top: 24px;
+  font-size: 16px;
+}
+
+#trips-section h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #1e293b;                /* dark slate on white bg  */
+}
+
+#trips-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;                     /* nice vertical spacing   */
+}
+
+/* A single trip row */
+.trip-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;     /* soft gray border        */
+  border-radius: 8px;
+  background: #f9fafb;           /* very light gray         */
+  transition: box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.trip-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+}
+
+/* Trip name (left side) */
+.trip-name {
+  font-weight: 500;
+  color: #111827;                /* almost‑black            */
+}
+
+/* Buttons (Open & Delete) */
+.trip-actions button {
+  padding: 6px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.trip-actions .open-btn {
+  background: #3b82f6;           /* blue accent             */
+  color: #fff;
+}
+
+.trip-actions .open-btn:hover {
+  background: #2563eb;
+}
+
+.trip-actions .delete-btn {
+  background: #f43f5e;           /* rose red                */
+  color: #fff;
+  margin-left: 8px;
+}
+
+.trip-actions .delete-btn:hover {
+  background: #be123c;
+}
+
+/* Empty‑state message */
+#no-trips-msg {
+  color: #6b7280;                /* gray‑500                */
+  margin-top: 4px;
+}
+
+/* Utility */
+.hidden { display: none; }
+
+
+/* ----------  New Trips Section  ---------- */
+#newtrips header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1e293b;                /* dark slate */
+}
+
+/* Trip‑creation card */
+#trip-form {
+  max-width: 420px;
+  background: #f9fafb6f;           /* very light gray */
+  border: 1px solid #e5e7eb;     /* subtle border */
+  border-radius: 8px;
+  padding: 24px 28px;
+  margin-top: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+#trip-form h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
+/* Text input */
+#trip-form input[type="text"] {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #ffffff5f;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 18px;
+}
+
+#trip-form input[type="text"]:focus {
+  outline: none;
+  border-color: #3b82f6;               /* blue accent */
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.25);
+}
+
+/* Create‑trip button */
+#trip-form button#create-trip {
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #10b981;                 /* mint‑green action */
+  color: #ffffff;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+#trip-form button#create-trip:hover {
+  background: #059669;                 /* darker green on hover */
+  transform: translateY(-1px);
+}
+
+#trip-form button#create-trip:active {
+  transform: translateY(0);
+}
+
+/* Responsive tweak */
+@media (max-width: 640px) {
+  #trip-form {
+    padding: 20px;
+    margin-top: 16px;
+  }
+}
+
+#created-trip{
+  color: #10b981;
+  margin-top: 10px;
+}

@@ -1,53 +1,45 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-analytics.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+import {
+  auth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword
+} from "../firebase.js";                 // ← single source of truth
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDzle99Baq5rfXGihyDURzUrV-WWh378o4",
-  authDomain: "splitwisee-project.firebaseapp.com",
-  projectId: "splitwisee-project",
-  storageBucket: "splitwisee-project.firebasestorage.app",
-  messagingSenderId: "927559959765",
-  appId: "1:927559959765:web:b85b4c89673a590de60e5c",
-  measurementId: "G-8TLG9Q1RH9"
-};
-
-const loggedIn = localStorage.getItem("loggedIn");
-
-if (loggedIn) {
-  window.location.href = "main.html";
-}
-
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-
-const auth = getAuth(app);
-
-const button = document.getElementById("login");
-
-button.addEventListener("click", (event) => {
-    event.preventDefault();
-
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-  signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed up 
-    const user = userCredential.user;
-    localStorage.setItem("loggedIn", true);
-    window.location.href = "main.html";
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    const errorMessageElement = document.getElementById("error-message");
-
-    // ..
-    errorMessageElement.innerHTML = errorMessage;
-  });
+/* Auto‑redirect if already logged in */
+onAuthStateChanged(auth, user => {
+  if (user) location.href = "main.html";
+  else      document.body.classList.remove("precheck");
 });
+
+/* FORM HANDLER */
+const form = document.querySelector("#login-form");
+const errorBox = document.querySelector("#error-message");
+
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  errorBox.textContent = "";
+
+  const email    = form.email.value.trim();
+  const password = form.password.value;
+
+  if (!email || !password) {
+    errorBox.textContent = "Please enter both e‑mail and password";
+    return;
+  }
+
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    // onAuthStateChanged will redirect on success
+  } catch (err) {
+    console.error(err.code);
+    errorBox.textContent = humanMessage(err.code);
+  }
+});
+
+function humanMessage(code) {
+  switch (code) {
+    case "auth/invalid-email":  return "That e‑mail looks wrong.";
+    case "auth/user-not-found": return "No account with that e‑mail.";
+    case "auth/wrong-password": return "Incorrect password.";
+    default:                    return "Login failed: " + code;
+  }
+}

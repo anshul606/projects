@@ -1,54 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoSplit</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="icon" href="assets/favicon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GoSplit</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="icon" href="assets/favicon.png" />
+  <link rel="stylesheet" href="css/trip.css">
 </head>
+
 <body>
-    <div class="bg-layer"></div>
-    <aside class="sidebar">
-        <div>
-            <h1 class="logo"><img src="assets/main-logo-nobg.png" alt="" width="180px"></h1>
-            <nav class="nav">
-                <a href="#" data-id="dashboard" class="nav-item nav-item-checked">Dashboard</a>
-                <a href="#" data-id="newtrips" class="nav-item ">New Trips</a>
-                <a href="#" data-id="expenses" class="nav-item ">Expenses</a>
-                <a href="#" data-id="settings" class="nav-item ">Settings</a>
-            </nav>
-        </div>
-        <button id="logout" class="logout">Logout</button>
-    </aside>
+  <div class="bg-layer"></div>
+  <aside class="sidebar">
+    <div>
+      <h1 class="logo">
+        <img src="assets/main-logo-nobg.png" alt="" width="180px" />
+      </h1>
+      <nav class="nav">
+        <a href="javascript:void(0)" data-id="dashboard" class="nav-item nav-item-checked">Dashboard</a>
+        <a href="javascript:void(0)" data-id="newtrips" class="nav-item">New Trips</a>
+        <a href="javascript:void(0)" data-id="settings" class="nav-item">Settings</a>
+        <a href="#" data-id="tripview" class="nav-item" style="display: none;">Trip</a>
+      </nav>
+    </div>
+    <button id="logout" class="logout">Logout</button>
+  </aside>
 
-        <div class="content">
-            <div class="content-item content-item_active" id="dashboard">
-                <header>
-                    <h1>Dashboard</h1>
-                    <div class="profile-image"></div>
-                </header>
-            </div>
-            <div class="content-item" id="newtrips">
-                <header>
-                    <h1>New Trips</h1>
-                    <div class="profile-image"></div>
-                </header>
-            </div>
-            <div class="content-item" id="expenses">
-                <header>
-                    <h1>Expenses</h1>
-                    <div class="profile-image"></div>
-                </header>
-            </div>
-            <div class="content-item" id="settings">
-                <header>
-                    <h1>Settings</h1>
-                    <div class="profile-image"></div>
-                </header>
-            </div>
-        </div>
+  <div class="content">
+    <div class="content-item content-item_active" id="dashboard">
+      <header>
+        <h1>Dashboard</h1>
+        <div class="profile-image"></div>
+      </header>
+      <section id="trips-section">
+        <h2>Your Trips</h2>
+        <ul id="trips-list"></ul>
+        <!-- list items will be injected here -->
+        <p id="no-trips-msg">No trips yet. Create one!</p>
+      </section>
+    </div>
+    <div class="content-item" id="newtrips">
+      <header>
+        <h1>New Trips</h1>
+        <div class="profile-image"></div>
+      </header>
+      <div id="trip-form">
+        <h2>Create a new trip</h2>
+        <input type="text" id="trip-name" placeholder="Trip name" />
+        <button id="create-trip">Create Trip</button>
+        <p id="created-trip"></p>
+      </div>
+    </div>
 
-    <script src="js/main.js"></script>
+
+
+    <div class="content-item" id="tripview">
+      <header>
+        <h1 id="trip-title">Trip</h1>
+        <div class="profile-image"></div>
+      </header>
+
+      <section id="expense-section">
+        <!-- expenses will render here -->
+        <ul id="expense-list"></ul>
+        <p id="no-expense-msg" class="hidden">No expenses yet.</p>
+      </section>
+
+      <section id="add-expense">
+        <h3>Add Expense</h3>
+        <input type="text" id="expense-desc" placeholder="Description" />
+        <input type="number" id="expense-amount" placeholder="Amount" />
+        <button id="add-expense-btn">Add</button>
+      </section>
+
+      <button id="generate-invite">Generate Invite Link</button>
+      <input  id="invite-link" readonly style="width:100%;margin-top:8px;">
+
+
+    </div>
+
+
+
+    <div class="content-item" id="settings">
+      <header>
+        <h1>Settings</h1>
+        <div class="profile-image"></div>
+      </header>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/trip.js"></script>
 </body>
+
 </html>

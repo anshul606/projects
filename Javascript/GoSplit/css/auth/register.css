@@ -17,6 +17,10 @@ body {
     background-color: black;
 }
 
+body.precheck { visibility:hidden; }   /* prevent form flash */
+.error { color:#f87171; margin-top:.5rem; font-size:.9rem; }
+
+
 .bg-layer {
   position: absolute;
   inset: 0;
@@ -37,7 +41,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 350px;
-    height: 500px;
+    height: 550px;
     transition: translate 0.3s ease;
 }
 .container:hover{
