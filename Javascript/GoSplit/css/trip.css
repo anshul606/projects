@@ -1,66 +1,43 @@
-/* Trip panel layout */
-#expense-section { margin-top: 20px; }
-
-#expense-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  gap: 10px;
-  display: grid;
+/* ——— layout ——— */
+#trip-content{
+  margin-top:20px;
+  display:flex;
+  flex-direction:column;
+  gap:2rem;
+  max-width:880px;
 }
 
-.expense-card {
-  display: flex;
-  justify-content: space-between;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 10px 14px;
+/* ——— cards ——— */
+.card{
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,.06);
+  padding:1.5rem 2rem;
 }
+.card h2{margin-top:0;font-size:1.25rem;font-weight:600}
 
-#add-expense {
-  margin-top: 28px;
-  padding: 18px 22px;
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  max-width: 400px;
+/* Expenses list */
+.expense-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.6rem 0;border-bottom:1px solid #eee;
 }
+.expense-user{font-size:.8rem;color:#888;margin-left:.4rem}
+.amount{font-weight:600}
+#expense-list{list-style:none;padding:0;margin:0}
 
-#add-expense input {
-  width: 100%;
-  padding: 8px 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  margin-bottom: 10px;
+/* Add‑expense form */
+#add-expense-form{
+  margin-top:1rem;display:grid;grid-template-columns:2fr 1fr auto;gap:.6rem
 }
+#add-expense-form input{padding:.55rem .8rem;border:1px solid #ddd;border-radius:6px}
+#add-expense-form button{background:#3b82f6;color:#fff;border:none;border-radius:6px;padding:.55rem 1.4rem;cursor:pointer}
 
-#add-expense button {
-  width: 100%;
-  padding: 10px 16px;
-  background: #3b82f6;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
+/* Invite row */
+.invite-row{display:flex;gap:.5rem;margin-top:1rem}
+#invite-link{flex:1;border:1px dashed #bbb;border-radius:6px;padding:.55rem .8rem;font-size:.9rem}
+#copy-invite{padding:0 .9rem;border:none;background:#f3f4f6;border-radius:6px;cursor:pointer}
 
-.hidden { display: none; }
-
-
-#generate-invite {
-  margin-top: 20px;
-  background: #3b82f6;
-  color: #fff;
-  padding: 8px 14px;
-  border:none; border-radius:6px; cursor:pointer;
-}
-
-#generate-invite:hover { background:#2563eb; }
-
-#invite-link {
-  font-size: 14px;
-  padding: 6px 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-}
+/* Members */
+#members-list{display:flex;flex-wrap:wrap;gap:.8rem;padding:0;margin:0;list-style:none}
+.member-badge{display:flex;align-items:center;gap:.4rem;background:#f5f7ff;border-radius:20px;padding:.3rem .9rem;font-size:.85rem}
+.member-badge img{width:24px;height:24px;border-radius:50%}

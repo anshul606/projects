@@ -1,15 +1,11 @@
-import { auth } from "../firebase.js";
+import { auth, db } from "../firebase.js";
 import {
   onAuthStateChanged,
   createUserWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 import { setDoc, doc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
-// After sign up
-await setDoc(doc(db, "users", user.uid), {
-  email: user.email,
-  name: user.displayName || "", // optional
-});
+
 
 /* Redirect if already logged in */
 onAuthStateChanged(auth, user => {
@@ -39,6 +35,11 @@ form.addEventListener("submit", async e => {
   } catch (err) {
     errorBox.textContent = friendlyErr(err.code);
   }
+
+  await setDoc(doc(db, "users", user.uid), {
+  email: user.email,
+  name: user.displayName || "", // optional
+});
 });
 
 function friendlyErr(code) {
@@ -46,3 +47,5 @@ function friendlyErr(code) {
   if (code === "auth/weak-password")        return "Password should be at least 6 characters.";
   return "Signup failed: " + code;
 }
+
+// After sign up

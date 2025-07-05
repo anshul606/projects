@@ -74,8 +74,15 @@ async function acceptInviteIfPresent(user) {
   // add user to trip members
   const tripRef = doc(db, "trips", tripId);
   await updateDoc(tripRef, {
-    members: arrayUnion(user.uid)
-  });
+  members: arrayUnion(user.uid),
+  membersInfo: arrayUnion({
+    uid: user.uid,
+    emailPrefix: user.email.split("@")[0]
+  })
+});
+
+
+
 
   await deleteDoc(inviteDoc.ref);          // optional clean‑up
 
@@ -140,84 +147,82 @@ function initApp(user) {
   fetchAndRenderUserTrips(user.uid);
 }
 
-async function fetchAndRenderUserTrips(uid) {
-  // query: trips where createdBy == uid OR members array-contains uid
+
+
+function fetchAndRenderUserTrips(uid) {
   const tripsCol = collection(db, "trips");
   const q = query(
     tripsCol,
-    or(where("createdBy", "==", uid), where("members", "array-contains", uid))
+    or(
+      where("createdBy", "==", uid),
+      where("members", "array-contains", uid)
+    )
   );
 
-  // one‑off fetch (change to onSnapshot(q, snap => …) for realtime)
-  const snap = await getDocs(q);
+  onSnapshot(q, snap => {
+    const listEl = document.getElementById("trips-list");
+    const emptyMsg = document.getElementById("no-trips-msg");
+    listEl.innerHTML = "";
 
-  const listEl = document.getElementById("trips-list");
-  const emptyMsg = document.getElementById("no-trips-msg");
-  listEl.innerHTML = ""; // clear old
-
-  if (snap.empty) {
-    emptyMsg.classList.remove("hidden");
-    return;
-  }
-  emptyMsg.classList.add("hidden");
-
-  snap.forEach((docSnap) => {
-    const trip = docSnap.data();
-    const tripId = docSnap.id;
-    const isOwner = trip.createdBy === uid;
-
-    const li = document.createElement("li");
-    li.innerHTML = `
-    <li class="trip-card">
-      <span class="trip-name">${trip.name}</span>
-      <div class="trip-actions">
-        <button class="trip-link open-btn" data-id="${tripId}">Open</button>
-        ${
-          isOwner
-            ? `<button class="delete-trip delete-btn" data-id="${tripId}">Delete</button>`
-            : ""
-        }
-      </div>
-    </li>
-  `;
-    listEl.appendChild(li);
-  });
-
-  // Delegate all clicks to list
-  listEl.addEventListener("click", async (e) => {
-    const tripBtn = e.target.closest(".trip-link");
-    const deleteBtn = e.target.closest(".delete-trip");
-
-    if (tripBtn) {
-      location.hash = tripBtn.dataset.id;
+    if (snap.empty) {
+      emptyMsg.classList.remove("hidden");
       return;
     }
+    emptyMsg.classList.add("hidden");
 
-    if (deleteBtn) {
-      const id = deleteBtn.dataset.id;
-      if (!confirm("Are you sure you want to delete this trip?")) return;
+    snap.forEach((docSnap) => {
+      const trip = docSnap.data();
+      const tripId = docSnap.id;
+      const isOwner = trip.createdBy === uid;
 
-      try {
-        await deleteDoc(doc(db, "trips", id));
-        if (location.hash.slice(1) === id) {
-          location.hash = "";
-          currentTrip = null;
-        }
-        fetchAndRenderUserTrips(uid); // Refresh list
-      } catch (err) {
-        console.error(err);
-        alert("Failed to delete trip.");
-      }
-    }
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <li class="trip-card">
+          <span class="trip-name">${trip.name}</span>
+          <div class="trip-actions">
+            <button class="trip-link open-btn" data-id="${tripId}">Open</button>
+            ${
+              isOwner
+                ? `<button class="delete-trip delete-btn" data-id="${tripId}">Delete</button>`
+                : ""
+            }
+          </div>
+        </li>
+      `;
+      listEl.appendChild(li);
+    });
   });
 
-  // delegate click to list
-  listEl.addEventListener("click", (e) => {
-    const btn = e.target.closest(".trip-link");
-    if (!btn) return;
-    location.hash = btn.dataset.id; // triggers loadTripFromHash()
-  });
+  // 👇 Make sure this stays here, outside onSnapsho
 }
+
+
+document.getElementById("trips-list").addEventListener("click", async (e) => {
+  const tripBtn = e.target.closest(".trip-link");
+  const deleteBtn = e.target.closest(".delete-trip");
+
+  if (tripBtn) {
+    location.hash = tripBtn.dataset.id;
+    return;
+  }
+
+  if (deleteBtn) {
+    const id = deleteBtn.dataset.id;
+    if (!confirm("Are you sure you want to delete this trip?")) return;
+
+    try {
+      await deleteDoc(doc(db, "trips", id));
+      if (location.hash.slice(1) === id) {
+        location.hash = "";
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Failed to delete trip.");
+    }
+  }
+});
+
+
 
 document.getElementById("create-trip").addEventListener("click", async () => {
   const tripName = document.getElementById("trip-name").value.trim();
@@ -227,11 +232,14 @@ document.getElementById("create-trip").addEventListener("click", async () => {
   if (!user) return alert("Not logged in");
 
   const tripData = {
-    name: tripName,
-    createdBy: user.uid,
-    members: [user.uid],
-    createdAt: Date.now(),
-  };
+  name: tripName,
+  createdBy: user.uid,
+  members: [user.uid],   // ← stay strings
+  membersInfo: [         // ← new parallel array
+    { uid: user.uid, emailPrefix: user.email.split("@")[0] }
+  ],
+  createdAt: Date.now(),
+};
 
   const createdTrip = document.getElementById("created-trip");
 

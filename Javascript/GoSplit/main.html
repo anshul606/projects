@@ -56,29 +56,44 @@
 
 
     <div class="content-item" id="tripview">
-      <header>
-        <h1 id="trip-title">Trip</h1>
-        <div class="profile-image"></div>
-      </header>
+  <header>
+    <h1 id="trip-title">Trip</h1>
+    <div class="profile-image"></div>
+  </header>
 
-      <section id="expense-section">
-        <!-- expenses will render here -->
-        <ul id="expense-list"></ul>
-        <p id="no-expense-msg" class="hidden">No expenses yet.</p>
-      </section>
+  <main id="trip-content">
+    <!-- CARD ①  EXPENSES ---------------------------------->
+    <section class="card expenses-card">
+      <h2>Expenses</h2>
+      <ul id="expense-list"></ul>
+      <p id="no-expense-msg" class="hidden">No expenses yet.</p>
 
-      <section id="add-expense">
-        <h3>Add Expense</h3>
-        <input type="text" id="expense-desc" placeholder="Description" />
-        <input type="number" id="expense-amount" placeholder="Amount" />
+      <form id="add-expense-form" autocomplete="off">
+        <input id="expense-desc" placeholder="Description" />
+        <input id="expense-amount" type="number" min="0" placeholder="Amount" />
         <button id="add-expense-btn">Add</button>
-      </section>
+      </form>
+    </section>
 
-      <button id="generate-invite">Generate Invite Link</button>
-      <input  id="invite-link" readonly style="width:100%;margin-top:8px;">
+    <!-- CARD ②  INVITE ------------------------------------>
+    <section class="card invite-card">
+      <h2>Invite friends</h2>
+      <button id="generate-invite">Generate Link</button>
 
+      <div class="invite-row">
+        <input id="invite-link" readonly />
+        <button id="copy-invite" title="Copy">📋</button>
+      </div>
+    </section>
 
-    </div>
+    <!-- CARD ③  MEMBERS ----------------------------------->
+    <section class="card members-card">
+      <h2>Members (<span id="member-count">0</span>)</h2>
+      <ul id="members-list"></ul>
+    </section>
+  </main>
+</div>
+
 
 
 
