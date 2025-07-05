@@ -39,6 +39,9 @@ button.addEventListener("click", (event) => {
     const user = userCredential.user;
     localStorage.setItem("loggedIn", true);
     window.location.href = "main.html";
+
+    const profileImage = ``;
+    localStorage.setItem("profileImage", profileImage);
     // ...
   })
   .catch((error) => {

@@ -1,5 +1,9 @@
 const loggedIn = localStorage.getItem("loggedIn") === "true";
 
+const profileImage = localStorage.getItem("profileImage");
+
+const profileImageElement = document.getElementById("profile-image");
+
 if (!loggedIn) {
   window.location.href = "login.html";
 }

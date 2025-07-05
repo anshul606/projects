@@ -96,8 +96,17 @@ body{
 /* === Content === */
 .content{
   flex:1;                /* fill leftover space */
-  padding:40px 50px;     /* internal spacing */
+  padding:20px 30px;     /* internal spacing */
   overflow-y:auto;
+}
+
+.content header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:5px;
+  padding-bottom:10px;
+  border-bottom: 1px solid rgba(54, 54, 54, 0.209);
 }
 
 .content-item{display:none;}
